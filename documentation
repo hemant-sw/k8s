@@ -1,0 +1,243 @@
+ 
+ <h1>1 - Container management</h1> 
+    There are mainy two types of Container management services
+    
+    1- Monolithic Containers - In this type of container all the  all the services are bundle of in one container
+       for example suppose you have application and in that application we have -
+        - Frontend 
+        - Backend
+        - Database
+        - Chat
+        - networks
+       So we have to deploy entire application again if we want to make any modifcation in any specific service of the application 
+       which is not a good pratice, Now we dont use this approch.
+
+    2- Micro Services - In Micro services we deploy each services individually like Frontend, Backend, Database.
+       So in this approch we dont need to deploy entire application we just deploy a specific service and every container running
+       Isolated with their own dependecy and configuration and they are not dependend on other container.
+
+So they are running isolated now we have to do something so they can communicate with each other.
+
+Orchestrator - Orchestrator helps us in deploying and managing container dynamically like - 
+                - Deploy
+                - Zero-update downtime
+                - Scale
+                - Self-Healing containers
+                    This above are the features of cloud native application
+
+Kubernetes - 
+It is the most popular container orchestration tool infact it has more features than orchestation. it allows you to deploy and manage multi-container applications at scale.
+
+Why kubernetes -
+    - To monitor them.
+    - runing pods on multiple nodes
+    - Flexibility
+    - Auto scaling 
+    - Sheduling
+    - Self healing capablities
+
+    ------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+                    Kubernetes Architeture
+
+Kubernetes clusters -
+ Kubernetes cluster is a set of node machines and contrtol plane for running containerized applications. If you're running Kubernetes, you're running a cluster.
+
+ Kubectl -
+ Kubectl is a kubeernetes CLI which helps us to communicate with control plane or cluster.
+
+ Control plane - 
+ It helps to manage worker nodes control.It helps in controlling entire cluster.It has following things
+            1 - API server -
+                            The API (application programming interface) server determines if a request is valid and then processes it. 
+                            The API is the interface used to manage, create, and configure Kubernetes clusters.
+            2 - Scheduler - scheduling refers to making sure that Pods are matched to Nodes so that the kubelet can run them. Preemption is the process 
+                            of terminating Pods with lower Priority so that Pods with higher Priority can schedule on Nodes.
+            3 - controller managers
+
+            4 - ETCD -
+                            Consistent and highly-available key value store used as Kubernetes backing store for all cluster data.
+
+Worker node -
+
+A worker node is a node that runs the application in a cluster and reports to a control plane. The main responsibilities of a worker node is to process data stored in the cluster and handle networking to ensure traffic between the application across the cluster and outside of the cluster are properly facilitated.
+it has following components -
+            1 - kubelet -
+                            An agent that runs on each node in the cluster. It makes sure that containers are running in a Pod. 
+            2 - kube-proxy - 
+                            It maintain network rules on nodes. these networl rules allow you to communicate to pods from network
+            3 - Containerd -
+                            The Container Runtime Interface (CRI) is the main protocol for the communication between the kubelet and Container Runtime. 
+            4 - pods -
+                      A pod is the smallest and simplest Kubernetes object.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+YAML - 
+        - It is most widely used in cloud-native space.
+        - Human readable data-serialization language.
+        - It is not a markup language.
+        - Indentaion matter a lot.
+
+
+To create a nginx pod
+  <kubectl <pod-name> --image=nginx>
+
+
+
+Namespaces -
+        - namespaces provides a mechanism for isolating groups of resources within a single cluster (cluster in sub-cluster).
+        - It will provide isolated environment to the teams. If their are two teams like development team and testing team then 
+          they should have different namesapces to work
+        - namespaces required to grouping resources separately like monitoring ,database etc.
+
+        - To create a name space use this commmand -
+        < kubectl create ns {namespace-name} >
+
+        - Like for example we have created a two namespace of name dev and  
+          testing by entering this commands
+             - kubectl create ns dev
+             - kubectl create ns testing
+        
+        - we can create pod with same name in two different namspace like below we did in dev and testing namepaces 
+             - kubectl create deploy saiyam --image=nginx -n testing
+             - kubectl create deploy saiyam --image=nginx -n dev
+
+
+        - To view all namespaces use this command
+             - kubectl get ns
+
+        - To view details of namespace use this command
+             - kubectl describe ns {namespace-name}
+
+        - To see declerative of creating a namespace use this command-
+             - kubectl create ns demo --dry-run=client -oyaml
+
+        - To delete namespace use this command -
+             - kubectl delete namespace {namespace-name}
+
+        - To switch to different namespace use this command
+             - kubectl config set-context --current --namespace=dev
+
+Labels and Selectors
+        - Kubernetes labels are key-value pairs that can connect identifying metadata with Kubernetes objects. 
+          it makes object meaningfull and easy to identify.
+
+        - To Show the label - (for example to check the labels of nginx)
+          - kubectl get pods --show-labels
+
+        - To create label use this command 
+          - kubectl get pod nginx live=demo
+
+        - In above live is the key and demo is the value.
+
+        - Lables are defined in the metadata section.  
+
+
+Pods -
+       Pods is the smallest unit in entire architecture of kuberneters cluster.
+       Container run inside the pod.
+       Each pod as assignes a pod IP.
+       A single pod can run multiple containers
+     
+     - To create a pod use this command -
+        kubectl run pod-name --image=nginx
+
+     - To see all details of pods like when it is created and when image was pulled & we use this when our pod is not starting .
+       kubectl describe pod hemant
+
+     - To go inside the pod to see what inside the pod use this command
+       kubectl exec -it pod-name -- sh
+
+       By going inside the pod you can see all things by typing ls and also you can go to differnt directory, to exit from interative terminal just type exit.
+       
+     - To see more pods information use this command -
+       kubectl get pods -owide
+     - To delete a pod use this command
+       kubectl delete pod pod-name --force
+
+Pod Lifecycle -
+     - Pending - 
+                finding the node waiting for PV to be ready and PVC to bound to it.
+
+     - ContainerCreating - 
+                Pulling images started it attaching network.
+
+     - Running - 
+                Pod is running.
+     - Error - 
+
+     - Crashloopbackoff - 
+                 process dying too many times.
+     - Succeeded -
+                 when work is completed - jobs etc 
+
+
+Init containers - 
+                 Init containers are the special type of container which run before the main containers they have similar use as regulat containers.
+
+                 To run init container first hit this command
+                 vi init 
+
+                 To insert file hit I button and paste this file-
+
+
+                 after entering this hit escsape button and type colon wq 
+
+                 To apply this file enter this command -
+                 kubectl apply -f init
+
+                 By entering this command inside pod init container will be created
+
+
+Multi-init contaienr - 
+                 It helps to run multi init containers.
+
+                 To insesrt yaml file use
+                 vi multi
+                 kubectl apply -f multi
+
+Multi-Container - 
+                 It helps us to create multiple container
+
+                 To insert yaml file use this -
+                 vi mc.yaml
+                 kubectl apply -f mc.yaml
+
+                 Pod with multi-container created
+
+                 To check all info
+                 kubectl describe pod multi-container
+
+                 To view logs of multi-conainer
+                 kubectl logs -f multi-container -c nginx-container
+
+                 To know what inside html file
+                 kubectl logs -f multi-container -c nginx-container -- curl localhost
+
+    
+
+
+
+
+
+
+
+                
+
+
+                                         
+
+
+
+            
+
+
+        
+
+
+
+
+
+   
