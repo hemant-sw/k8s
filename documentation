@@ -216,6 +216,41 @@ Multi-Container -
                  To know what inside html file
                  kubectl logs -f multi-container -c nginx-container -- curl localhost
 
+Probes - 
+        When via service kubernetes sending a traffic to a pod continously. suppose due to any reason (deadlock  or any error) the pod is not ready to handle that much of traffic but here kubernetes doesnot know that the pod is not ready and it keep sending the traffic to the pod this will 
+        lead to data inconsistency and not gives proper output to the application so to overcome that situation probes comes into the picture.
+
+        There are 3 types of Probes.
+        1 - Readiness probes
+        2 - Startup probes
+        3 - Liveness probes
+
+        1- Readineses Probes - It will check the pod is ready or not accept  that much of traffic.
+                             - It will Check dependecy for the pod in terms of availability of service and latency issue check
+
+        2 - Startup  - first this will execute until it success other probes are not executed
+
+        3 - Liveness probes - http get - if response ok or not 200 -399
+                            - tcpsocket - portcheck
+                            - exec custom command (like file check ) to check if the pod is ready or not 
+                            - kubelet restarts container when liveness fails.
+
+Limits - 
+        Limits as the maximum amount of a resource to be used by a container. This means that the container can never consume more than the memory amount or CPU amount indicated.
+
+
+Request -
+        Requests are the minimum guaranteed amount of a resource that is reserved for a container.
+
+
+        If we ask for more cpu and that much cpu is not present in our system like if we total 2 cpu and we are reauesting for 3 then pod will not run it will be in pending state and scheduler will not start
+
+
+
+
+
+
+
     
 
 
