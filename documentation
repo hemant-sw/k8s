@@ -325,6 +325,78 @@ ReplicaSet - A ReplicaSet is a process that runs multiple instances of a Pod and
                Above command will delete all depoyment pods and replicaset will be deleted nothing will be there
 
 
+Statefulsets - Stateful application are those in which we have to persist the volume or store the datas.
+               
+             - It will create pod with predictable names even if pod dies it will recreated with same name.
+
+             - For statefull set you have to use only headless service  
+
+             - Headless Service - StatefulSets require a headless service to return the IPs of the associated pods and enable 
+                                  direct interaction with them. The headless service has a service IP but no IP address and has
+                                  to be created separately. The major components of a StatefulSet are the set itself.
+
+             - Any service - When you use any services like you use in deployment then you can not use any replicas in case of
+                              stateful apps as this  will lead to data imconsistency. 
+             
+             - When you delete a statefull application it will be deleted in reverse order (decreasing order) 
+
+             some commads to check presistet volume
+             kubectl get pv (persistet volume)
+             kubectl get pvc (persistet volume calim)
+             kubectl get sc (for storage class)
+
+            
+K8s Networking - when you  create a pod  suppose you create a 2 container pod so after pod creation CNI attach IP address and
+                 attch it to network.
+
+                 Every node has eth-0 address and his own ip address, root namespace and network namespace
+
+                 In network namespace you will see three container 2 container which you have created and one is pause container.
+
+                 Pause container is sleep container and it hold the network namespces
+                 CNI will create a network and pause container holds the network namespace 
+
+                 Every pod has its own ip address the CNI gives this ip address.
+
+                 When you exec into that pod and you to type ip addr from there you will find eth-0 which is attach to root network v-eth
+
+                 To list namespaces use this command
+                 ip netns list
+
+                 To ssh into node-1 
+                 ssh node01
+                 and list all namespace 
+
+              -  To see network namespces held by   
+                 pause container follow this 
+
+                 - after exec into the pod type
+                   lsns 
+
+                   afterthat 
+                   lsns |grep nginx 
+
+                   from here you can see root network id to view it use -
+                   lsns -p [root-id-num]
+
+                   from there you can see net, uts, ipc are hold by pause container 
+
+
+Service - Service helps to navigate traffic to external , internal to other port
+        - Pods will come and go and pod ip will be changing every time so
+          there is no any specific ip to use we need a constant ip.
+          Loadbalancing when you have multiple replicas
+
+          There are 4 types of service.
+
+          Cluster IP
+          NodePort  
+          LoadaBalancer
+          Headless 
+
+ 
+
+
                
  
 
