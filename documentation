@@ -349,7 +349,7 @@ Statefulsets - Stateful application are those in which we have to persist the vo
 K8s Networking - when you  create a pod  suppose you create a 2 container pod so after pod creation CNI attach IP address and
                  attch it to network.
 
-                 Every node has eth-0 address and his own ip address, root namespace and network namespace
+                 Every node has eth-0 address and his own ip address like root namespace and network namespace
 
                  In network namespace you will see three container 2 container which you have created and one is pause container.
 
@@ -393,6 +393,62 @@ Service - Service helps to navigate traffic to external , internal to other port
           NodePort  
           LoadaBalancer
           Headless 
+
+          ClusterIP - This makes the service only reachable within the cluster. You cannot make requests to service (pods) from outside the cluster for that we need ingress controller
+
+              Ingress - It is an API object that provides routing rules to manage access to the services within a Kubernetes cluster.
+
+          NodePort - NodePort services are accessible outside the cluster. It creates a mapping of pods to its hosting node/machine on a static port.
+
+          LoadBalancer - This service type creates load balancers in various Cloud providers like AWS, GCP, Azure, etc., to expose 
+                         our application to the Internet. The Cloud provider will provide a mechanism for routing the traffic to the services. The most common example usage of this type is for a website or a web app.
+
+
+
+        - Example of services - 
+          create pod nginx -
+          kubectl run nginx2 --image=nginx
+
+        - To expose port use this command
+          kubectl expose pod nginx --port 80
+
+
+        - TO see the all services running
+          kubectl get svc  
+
+          from there you can see your cluster ip
+
+        - To see the complete ip use this command
+          kubectl get pods -owide  
+
+          copy IP address and run this command
+          curl [your ip-address]
+
+          after running this command you can access your nginx locally but you can not access it from outside world.
+          in order to get access you have to edit service type ClusterIP to NodePort , for that use this command 
+
+          kubectl edit svc 
+          {edit Type to NodePort}
+          after that when you check svc you can see nodeport there
+          kubectl get svc nginx
+
+          Finally when you see this on nodeport you will able to see nginx welcome message 
+
+
+
+ConfigMaps and secrets - Both ConfigMaps and secrets store the data the same way, with key/value pairs, but ConfigMaps are meant
+                         for plain text data, and secrets are meant for data that you don't want anything or anyone to know about except the application.
+
+                       - You can use environment variables in config maps.
+                       - You can also use volume mount in config maps.  
+
+
+
+
+
+
+
+
 
  
 
