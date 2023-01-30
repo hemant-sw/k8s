@@ -9,7 +9,7 @@
         - Database
         - Chat
         - networks
-       So we have to deploy entire application again if we want to make any modifcation in any specific service of the application 
+       Problem with monolithic approach is that suppose we want to make any modification in the application we have to deploy entire application again.
        which is not a good pratice, Now we dont use this approch.
 
     2- Micro Services - In Micro services we deploy each services individually like Frontend, Backend, Database.
@@ -42,7 +42,7 @@ Why kubernetes -
                     Kubernetes Architeture
 
 Kubernetes clusters -
- Kubernetes cluster is a set of node machines and contrtol plane for running containerized applications. If you're running Kubernetes, you're running a cluster.
+ Kubernetes cluster is a set of node machines and control plane for running containerized applications. If you're running Kubernetes, you're running a cluster.
 
  Kubectl -
  Kubectl is a kubeernetes CLI which helps us to communicate with control plane or cluster.
@@ -82,7 +82,7 @@ YAML -
 
 
 To create a nginx pod
-  <kubectl <pod-name> --image=nginx>
+  <kubectl run <pod-name> --image=nginx>
 
 
 
@@ -101,8 +101,8 @@ Namespaces -
              - kubectl create ns testing
         
         - we can create pod with same name in two different namspace like below we did in dev and testing namepaces 
-             - kubectl create deploy saiyam --image=nginx -n testing
-             - kubectl create deploy saiyam --image=nginx -n dev
+             - kubectl create deploy hemant --image=nginx -n testing
+             - kubectl create deploy hemant --image=nginx -n dev
 
 
         - To view all namespaces use this command
