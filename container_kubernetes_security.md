@@ -89,7 +89,7 @@ What does it mean to Root inside the container -
    <ps -ef | grep sleep>
    Now you can see that sleep 3d running as a non-root user
 
-   So whenever you are running a container always run as non-root because if anyone breaks this he still in this specific namespace he won't be as root 
+   So whenever you are running a container always run as non-root because if anyone breaks this he still in this specific namespace so  he won't be as root.
  
 
  
