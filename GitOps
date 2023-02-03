@@ -1,5 +1,6 @@
 <h1>GitOps</h1> - GitOps is a branch of DevOps that focuses on using git repositories to manage infrastructure and application 
-                  code deployments. The main difference between the two is that in GitOps, the git repository is the source of truth for the deployment state, while in DevOps, it is the application or server configuration files.
+                  code deployments. The main difference between the two is that in GitOps, the git repository is the source of truth for the deployment state, 
+                  while in DevOps, it is the application or server configuration files.
 
                   GitOps feature -
                   - Deploy more frequently
@@ -16,13 +17,18 @@ GitOps Principal - Desired state of gitops must managed system must be ;
 
 
     1 - Declarative - Declarative means that configuration is guaranteed by a set of facts instead of by a set of instructions,
-                      for example, “there are ten Redis servers”, rather than imparative ways for example "pull the image of redis and run in an container and start ten containers " so we make our info declarative in order to use.
+                      for example, “there are ten Redis servers”, rather than imparative ways for example
+                      "pull the image of redis and run in an container and start ten containers " so we make our info declarative in order to use.
 
     2 - Verion controlled - As the version control system acts as a central repository for declaring and managing the 
-                            infrastructure’s desired state, you can experiment with new features and quickly rollback/revert when required. When a commit is made, details such as the committer information, commit timestamp and the commit ID are stored. As such, you can fully trace all the changes made to the state of the infrastructure at any given point in time. 
+                            infrastructure’s desired state, you can experiment with new features and quickly rollback/revert when required. 
+                            When a commit is made, details such as the committer information, commit timestamp and the commit ID are stored.
+                            As such, you can fully trace all the changes made to the state of the infrastructure at any given point in time. 
 
     3 - Automation ( Pulled automatically ) - The advantage of the declarative description is that you can declare the system’s
-                                              desired state in the Git code and then automate the system to apply all the approved changes to the system. By implementing a feedback control loop integrated into your continuous deployment pipeline, you can automate deployments. While it significantly increases the number of changes you make per day, it also reduces mean time to deployment.
+                                              desired state in the Git code and then automate the system to apply all the approved changes to the system.
+                                              By implementing a feedback control loop integrated into your continuous deployment pipeline, you can automate deployments.
+                                              While it significantly increases the number of changes you make per day, it also reduces mean time to deployment.
    
     4 - Continously Reconciled - If you are aware of your actual state( current status of your code) and as well as desired state 
                                 (Changes you made and want to merge ) and want to reconciled those changes
