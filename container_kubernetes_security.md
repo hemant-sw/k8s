@@ -90,6 +90,95 @@ What does it mean to Root inside the container -
    Now you can see that sleep 3d running as a non-root user
 
    So whenever you are running a container always run as non-root because if anyone breaks this he still in this specific namespace so  he won't be as root.
+
+
+Privileged container - Running a privileged container has more access to the host then the normal container.
+
+
+
+=> By default container runtimes go to great lengths to shield a container from the host system. Running in --privileged mode disables/bypasses most of these checks. This basically means that if you are root in a container you have the privileges of root on the host system. Is is only meant for special cases such as running Docker in Docker and should be avoided.
+
+
+=> running containers in privileged mode is really a bad idea because  privileged container system with root access gives you access to the host filesystem, kernel settings and processes.
+
+=> Kernel files are very importent file on host machine we are going to see how we can mess with it.
+
+Swappiness - This control is used to define how aggressive the kernel will swap
+memory pages.  Higher values will increase aggressiveness, lower values
+decrease the amount of swap.  A value of 0 instructs the kernel not to
+initiate swap until the amount of free and file-backed pages is less
+than the high water mark in a zone.
+
+=> By default swappiness value of host machine is 60.
+
+=> To know the swappiness value of your host machine use this command-
+
+   <cat /proc/sys/vm/swappiness>
+
+   You can change the swapiness value of the container by running container in a priviledge container , to do that you can follow this step.
+
+   1 - <docker run --rm --privileged -it ubuntu bash>
+
+       you are now running a contaienr in privilige mode.
+       
+   2 - Now lets try to edit the swappiness value.
+       
+       <cat /proc/sys/vm/swappiness> 
+       
+       at present the swappiness value is 60 or in killerkoda it will be 0.
+
+   3 - { echo 10 > /proc/sys/vm/swappiness }
+
+       after changing this the swapiness value will be zero.
+
+       => These kind of changes to the kernel files can create DoS attacks!
+
+   4 - How to know we are running a normal container or a priviledge contaienr run two containers, one normal & one privileged
+
+      <docker run --rm -it ubuntu bash>
+      <docker run --rm --privileged -it ubuntu bash>
+         1- By Checking for mount permissions & masking.
+           <mount | grep 'ro,'>
+           <mount | grep /proc.*tmpfs>
+
+       when you check the mount point in normal container all the information is in read only format but in previleged container
+       it will not in read only you can edit those.
+         2 - Linux capabilities - we will see more about it in the next section!
+             <capsh --print>
+
+             In normal container you have more number of capailities but in preveledged container you have lesser nomber of capabilities means you can do various other
+             things in preveleged container.
+
+
+
+capabilities - The purpose of performing permission checks, traditional UNIX implementations distinguish two categories of processes:
+       privileged processes (referred to as superuser or root ,whose effective UID is zero), and unprivileged processes (whose
+       effective UID is nonzero).  Privileged processes bypass all kernel permission checks, while unprivileged processes are
+       subject to full permission checking .
+
+       => There are various types of capalities some of them are -
+
+          CAP_AUDIT_CONTROL
+          CAP_AUDIT_READCAP_AUDIT_READ
+          CAP_AUDIT_WRITE
+
+      =>  The goal of capabilities is divide the power of superuser into
+          pieces, such that if a program that has one or more
+          capabilities is compromised, its power to do damage to the
+          system would be less than the same program running with root
+          privilege.
+
+      =>  To print all the capabilities use this command -
+          <capsh --print>
+
+
+
+
+
+
+
+
+
  
 
  
