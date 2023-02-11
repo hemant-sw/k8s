@@ -119,7 +119,7 @@ than the high water mark in a zone.
 
    1 - <docker run --rm --privileged -it ubuntu bash>
 
-       you are now running a contaienr in privilige mode.
+       you are now running a contaiener in privilige mode.
        
    2 - Now lets try to edit the swappiness value.
        
@@ -129,7 +129,7 @@ than the high water mark in a zone.
 
    3 - { echo 10 > /proc/sys/vm/swappiness }
 
-       after changing this the swapiness value will be zero.
+       after changing this the swapiness value will be 10.
 
        => These kind of changes to the kernel files can create DoS attacks!
 
@@ -170,6 +170,67 @@ capabilities - The purpose of performing permission checks, traditional UNIX imp
 
       =>  To print all the capabilities use this command -
           <capsh --print>
+
+
+
+
+Trivy => It is used to Scan docker images and i will list down all the vulnerabilities, misconfigurations, secrets, SBOM 
+         in containers, Kubernetes, code repositories, clouds and more
+
+
+         => First we have to install trivy in our system.
+            * Type this command 
+              <wget https://github.com/aquasecurity/trivy/releases/download/v0.37.2/trivy_0.37.2_Linux-64bit.deb>
+            * Then 
+              <dpkg -i  trivy_0.37.2_Linux-64bit.deb>
+              Trivy suceessfully install inn your system.
+
+         => To check valnurability in nginx 
+            * Trivy i nginx
+              you can see all the valunurabilty in nginx images
+
+
+
+=> how to fix issues in argocd!
+
+This will not work on killercoda due to disk space constraints, use your local machine to try it!
+
+git clone https://github.com/argoproj/argo-cd
+cd argo-cd
+# Errors due to BUILDPLATFORM specification, just remove it from the Dockerfile!
+docker build . -t argocd
+trivy i argocd
+It will take sometime to build, so let's review multi-stage builds for a while.
+
+https://github.com/argoproj/argo-cd/blob/master/Dockerfile
+
+Change the base image in the dockerfile, rebuild the argocd image & then scan it. Most of the issues will be sorted out!   (older version have less valnurabilitiy in comparison to newer images.)
+
+
+
+
+
+=> Memory limits for containers and Fork bomb - Always set a memory limit in your container.
+
+   Ex - Creating a ubuntu image  with unlimited name -
+        <docker run --name unlimited --rm -it ubuntu bash> 
+
+       { open a new tab to see memory limits and usage-
+        <docker stats unlimited> }
+      -> Finally run the fork bomb command -
+         :(){ :|:& };:
+
+         When it reach the thershould limit of memory then it will stop working and you have to start the system.
+         So to avaid this scenario always set the limits 
+
+         Ex - Creating a ubuntu image  with limited name -
+              <docker run --name withlimits --rm -m 0.5Gi --cpus 0.8 -it ubuntu bash>
+                { open a new tab to see memory limits and usage-
+                 <docker stats withlimited> }
+d
+
+
+
 
 
 
