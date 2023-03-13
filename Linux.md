@@ -46,3 +46,20 @@ SHELL Types -
    11 - To create a file with multiline message 
         <cat > file.txt>
 
+ Vi text editor => he default editor that comes with the UNIX operating system is called vi (visual editor). 
+ Using vi editor, we can edit an existing file or create a new file from scratch. we can also use this editor to just read a text file
+
+=> To start a vi editor use this command
+   <vi index.html>
+=> To start insert mode type lowercase <i> after that you can easily modify the files content to switch back from the insert mode use
+   <escape> button
+=> To move around the page use arrow keys or k,h,j,l
+=> TO delete a charater use x or to delete an entire line use dd.
+=> To copy a line ues yy and to paste a line use p
+=> To scroll page up or down use ctrl + u and crtl + d
+=> : colol takes you to the propmt where you can type commands
+=> To save the command use :w
+=> To discard the changes use or quit :q
+=> TO save the changes and quit use :wq
+
+
