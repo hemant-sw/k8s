@@ -63,3 +63,64 @@ SHELL Types -
 => TO save the changes and quit use :wq
 
 
+Linux command for user accounts
+
+1 => <whoami>  tells user name
+
+2 => <id> tells more details about the user
+
+3 => To switch from  one user to another use <su username>
+
+4 => you can not root user as a root user and root user has no restriction thats why access to the root user is restricted for that use this command 
+<sudo ls /root >
+
+Whenever you get permission denied errors it could be because of sudo previleges
+
+
+Commnad which help to download files =>
+
+1 => To download images , packages etc. you can use 
+     <curl url_of_file -o>
+     You can also use 
+     <wget url -O>
+
+TO check the OS version
+
+1 => use this command to know about OS
+     ls /etc/*release*
+
+2 => TO know more detail about OS
+     cat /etc/*release*
+
+Package management =>
+Ubuntu features a comprehensive package management system for installing, upgrading, configuring, and removing software.
+
+
+Advanced Packaging Tools (APT)
+
+=> To install a package 
+   <sudo apt install nmap>
+
+   You can specify multiple packages to be installed or removed, by separating them with spaces.
+
+=> To Remove a package
+   <sudo apt remove nmap>
+
+   Adding the --purge option to apt remove will remove the package configuration files as well. This may or may not be the desired effect, so use with caution
+
+=> Update the package index 
+   <sudo apt update>
+
+=> Upgrade packages
+   <sudo apt upgrade>
+
+
+
+
+
+
+
+
+
+
+
