@@ -50,3 +50,80 @@ system whereas in Continuous Deployment this process is automatic.</pr>
        {java -jar jenkins-cli.jar -s http://localhost:8080 -auth username:password}</ul>
      <ul>Now you can use jenkins CLI.</ul>
 
+     How to create new job in jenkins-
+
+      - first create an API token
+      - To create a new job go to jenkins portal and click on new item.
+      - enter item name and click on pipeline scroll all the way down under pipe line tab change sample pipeline hello world and
+        save it. 
+      - to list the job use this command 
+        {java -jar jenkins-cli.jar -s http://localhost:8080 -auth username:apitoken -webSocket list-jobs}
+        and it will list all the jobs
+      - for build use this command
+        {java -jar jenkins-cli.jar -s http://localhost:8080 -auth username:apitoken -webSocket build item-name}
+        and it will be build successfully.
+
+
+    How to manange plugins in jenkins via UI
+
+     - Go to dashboard>manage jenkins> manage plugin from there you can install update and delete any plugins.
+
+    How to manage plugins in jenkins via CLI
+
+      - To install or update plugin use this command
+        {java -jar jenkins-cli.jar -s http://localhost:8080 -auth username:password install-plugin plugin-name}
+        And restart the jenkins by -
+        {sudo systemctl restart jenkins}
+  
+      - To Enable/Disable plugin use this commnad -
+         {java -jar jenkins-cli.jar -s http://localhost:8080 -auth username:password enable-plugin plugin-name}
+         {java -jar jenkins-cli.jar -s http://localhost:8080 -auth username:password disable-plugin plugin-name} 
+         And restart the jenkins by -
+         {sudo systemctl restart jenkins}
+
+      - To Delete a plugin use this command - s
+
+
+      - To list all the plugins -
+         {java -jar jenkins-cli.jar -s http://localhost:8080 -auth username:password list-plugins}
+
+
+How to create a new user in jenkins UI - 
+  - Go to manage jenkins > manage users > create new user > create user
+
+How to give role based strategy to the newly created user -
+
+  - Install the plugin named Role-based-Authorization strategy.
+
+  - After installing go to manage jenkins > configure global security > under authentication select autorization and choose 
+    role based stategy > apply and save it .
+
+  - After turning on the strategy again go to manage jenkins > in security
+  tab > manage and assign roles
+
+  - Here you see three option
+    - manage roles -> for adding diffrent role like frontend dev etc.
+    - assign roles -> for assiging roles to the different users like which user is develper or devops engineer.
+    - role strategy macros
+
+  - How to add new roles (dev , SDE) -
+
+    - click on manage roles and add role in role to add option and click on add
+
+    - In global role you can see the newly created role and from there you can give permission to the various roles 
+
+    - and finally you have to just apply and save it.
+
+  - How to add roles to the user ( who is dev or SDE)
+
+    - click in user to add column from there you can add diffrent users 
+
+    - after adding user now you can see all the user in global roles and from there you can assign different roles to the user
+
+
+
+
+
+
+
+
