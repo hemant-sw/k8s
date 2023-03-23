@@ -200,12 +200,19 @@ How to build multi-stage pipeline
 
    - after that save it  and build now you can see that there is two build stage
 
-   
-
-
-
-
 </section>
+
+How to Use ubuntu server as build agent
+
+   - First you have to add new user for that go to terminal use this command
+     {sudo adduser user-name}
+   - To give new user admin previlege use this command 
+     {sudo usermod -aG sudo user-name} 
+   - To add new user in sudo group 
+     { groups user-name}
+  
+  After that go to jenkins dashboard
+   - Go to manage jenkins > manage credentials > click on system > click global credentials > add credentials > add details of new user
 
 
 </body>
