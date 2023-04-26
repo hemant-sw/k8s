@@ -2,7 +2,83 @@ What is Linux ?
 
 Linux® is an open source operating system (OS). An operating system is the software that directly manages a 
 system's hardware and resources, like CPU, memory, and storage. The OS sits between applications and hardware
-and makes the connections between all of your software and the physical resources that do the work.\
+and makes the connections between all of your software and the physical resources that do the work.
+
+Linux terminoloogies -
+
+1 - Kernels 
+2 - distribution
+3 - boot loader
+4 - service 
+5 - file system
+6 - X windows
+7- desktop environement
+8 - command line
+
+Kernels - It basically acts as an interface between user applications and hardware. The major aim of kernel is to manage communication between software i.e. user-level applications and hardware i.e., CPU and disk memory. 
+
+   Types of kernels -
+     1 - Monolithic kernels
+     2 - microlithic kernels
+     3 - hybrid kernels
+
+Distribtutions -  It is a version of the Linux operating system that includes a collection of software applications, tools, and utilities that are bundled together into a complete package.
+
+     Example - Debian , UBuntu , mint , centOS ,RHEL etc
+
+
+Boot Loader - A bootloader is a program that loads and starts the operating system (OS) on a computer or mobile device. It is responsible for initializing hardware components, verifying the integrity of the OS, and loading it into memory
+
+     Example - GRUB , UEFI , Linux loader.
+
+
+Services - a service is a program or set of programs that runs as a background process , providing specific functions or capabilities to the system or other programs. These services are typically started automatically when the system boots up and continue to run until the system is shut down or the service is manually stopped.
+
+Filesystem - the file system in Linux is a crucial component of the operating system that allows the system to store, organize, and access data on storage devices.
+
+X windows system - graphical subsystem in all linux system.
+
+Desktop environment - Is is the graphical UI on top of the  operating system 
+     Example - GNOME ,KDE , XFCE
+
+
+Command line - tool that is used to type the command on top of the operating system.
+
+SHELL - It provide a powerfull and flexisible way to interact with operating system 
+
+       Types -
+       - Bourne Shell (sh shell)
+       - C shell
+       - Z shell
+       - Bourne Again shell (BASH)
+
+System Startup Process - The system startup process is the sequence of events that occur when a computer or other electronic device is turned on or rebooted. The specific steps involved in the startup process can vary depending on the type of device and the operating system being used, but generally follow a similar pattern. Here is a general overview of the system startup process:
+
+        - Power on self-test (POST): When the device is turned on, the first thing that happens is the power on self-test. This is
+          a series of diagnostic checks that the hardware performs to make sure everything is working properly. If any issues are detected during the POST, an error message will be displayed.
+
+        - boot -loader: After the POST is complete, the boot loader program takes over. The boot loader is responsible for loading
+          the operating system into memory. Depending on the device and operating system, the boot loader may also perform other tasks such as configuring hardware and loading drivers.
+
+        - Kernel initialization: Once the operating system is loaded into memory, the kernel initializes. The kernel is the core
+          of the operating system and is responsible for managing system resources such as memory, CPU, and input/output operations.
+
+        - System services and daemons: After the kernel is initialized, system services and daemons are started. These are
+          programs that run in the background and provide various functions and services to the operating system and applications.
+
+        - User login: Once the system services and daemons are running, the user login screen is displayed. The user can then log
+          in to the system and start using applications.
+
+        - Startup applications: Finally, any startup applications specified by the user or configured to run automatically by the
+          operating system are launched. These may include email clients, web browsers, and other applications that the user wants to have running when they first log in.
+
+
+
+
+
+
+
+
 
 Why Linux ?
 
@@ -12,11 +88,7 @@ Most DevOps tools have a requirement for Linux because many new tools of Devops 
            - In kubernetes cluster master nodes can only be linux system.
 
 
-SHELL Types -
- - Bourne Shell (sh shell)
- - C shell
- - Z shell
- - Bourne Again shell (BASH)
+
 
  - To know the shell type use this command 
  <echo $SHELL>

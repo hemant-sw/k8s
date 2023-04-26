@@ -1,3 +1,38 @@
+What is  DevOps ? 
+    Devops is a process of improving software delivery in lesser time by ensuring -
+     - Automation
+     - Code quality
+     - Contionous delivery
+     - Continouis testing 
+ 
+
+ Software Development Lifecycle - 
+
+    Software Development Life Cycle (SDLC) is a process used by the software industry to design, develop and test high quality softwares. The SDLC aims to produce a high-quality software that meets or exceeds customer expectations, reaches completion within times and cost estimate
+
+    - It is a process that followed by the indusrty to 
+       - Design
+       - Develop
+       - Test 
+    - End goal of SDLC is to deliver a high quality product.
+
+
+    There are 6 stages of SDLC
+
+    Stage_1 Planning (gathering of information) -  Requirement analysis is the most important and fundamental stage in SDLC. It is performed by the senior members of the team with inputs from the customer, the sales department, market surveys and domain experts in the industry. This information is then used to plan the basic project approach and to conduct product feasibility study in the economical, operational and technical areas.
+
+    Stage_2 Defining (Documenting Planning) - Once the requirement analysis is done the next step is to clearly define and document the product requirements and get them approved from the customer or the market analysts. This is done through an SRS (Software Requirement Specification) document which consists of all the product requirements to be designed and developed during the project life cycle.
+
+    Stage_3 Desinging - There will be n numbers of product architecture among them the best which have effcient cost , deliver in less time will be choosen ,scalable when required and  have n number of replicas.
+
+    stage_4 Building (Developing) - At this stage, the actual development starts. It’s important that every developer sticks to the agreed blueprint. Also, make sure you have proper guidelines in place about the code style and practices.
+  
+    Stage_5 Testing ( Quality assurance engineer) - In this stage, we test for defects and deficiencies. We fix those issues until the product meets the original specifications ,we want to verify if the code meets the defined requirements.
+
+    Stage_6 Deployment - At this stage, the goal is to deploy the software to the production environment so users can start using the product. However, many organizations choose to move the product through different deployment environments such as a testing or staging environment.
+  
+
+    
  
  <h1>1 - Container management</h1> 
     There are mainy two types of Container management services

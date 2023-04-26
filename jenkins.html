@@ -202,19 +202,17 @@ How to build multi-stage pipeline
 
 </section>
 
-How to Use ubuntu server as build agent
+How to connect slave machine to the jenkins
 
-   - First you have to add new user for that go to terminal use this command
-     {sudo adduser user-name}
-   - To give new user admin previlege use this command 
-     {sudo usermod -aG sudo user-name} 
-   - To add new user in sudo group 
-     { groups user-name}
-  
-  After that go to jenkins dashboard
-   - Go to manage jenkins > manage credentials > click on system > click global credentials > add credentials > add details of new user
+follow these tutorial 
+https://youtu.be/Se7JtzFVZGE
 
+How to use newly created build  agent for CICD pipeline
 
+- Fist cleck on New item > enter item name > select freestyle project and create 
+- afer that in general select - where this project can be run and in label put your build agent name and message will be shown below like matches one node 
+- In build click build step and select execute shell and write any echo message and hit save button and build now in console 
+  output you can see that your build successfully or not <div class=""></div>
 </body>
 
 </html>
