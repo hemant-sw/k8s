@@ -15,7 +15,11 @@ Linux terminoloogies -
 7- desktop environement
 8 - command line
 
-Kernels - It basically acts as an interface between user applications and hardware. The major aim of kernel is to manage communication between software i.e. user-level applications and hardware i.e., CPU and disk memory. 
+Kernels - It basically acts as an interface between user applications and hardware. The major aim of kernel is to manage communication between software i.e. user-level applications and hardware i.e., CPU and disk memory. kernel is a heart of any operating system which basically manages the 
+   - Device management
+   - Memory management
+   - Process mangagement
+   - Handling system calls
 
    Types of kernels -
      1 - Monolithic kernels
@@ -44,7 +48,7 @@ Desktop environment - Is is the graphical UI on top of the  operating system
 
 Command line - tool that is used to type the command on top of the operating system.
 
-SHELL - It provide a powerfull and flexisible way to interact with operating system 
+SHELL - It provide a powerfull and flexisible way to interact with operating system with CLIs
 
        Types -
        - Bourne Shell (sh shell)
@@ -71,13 +75,6 @@ System Startup Process - The system startup process is the sequence of events th
 
         - Startup applications: Finally, any startup applications specified by the user or configured to run automatically by the
           operating system are launched. These may include email clients, web browsers, and other applications that the user wants to have running when they first log in.
-
-
-
-
-
-
-
 
 
 Why Linux ?
@@ -116,7 +113,13 @@ Most DevOps tools have a requirement for Linux because many new tools of Devops 
    10 - To create a file
        <touch file.txt>
    11 - To create a file with multiline message 
-        <cat > file.txt>
+        <cat file.txt>
+   12- To view all the files with date and time 
+        <ls -ltr>     
+   13 - To save password in the terminal
+        <export passord='your_password'>
+        to access that password use
+        <$password>
 
  Vi text editor => he default editor that comes with the UNIX operating system is called vi (visual editor). 
  Using vi editor, we can edit an existing file or create a new file from scratch. we can also use this editor to just read a text file
